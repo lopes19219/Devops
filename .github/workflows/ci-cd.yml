@@ -3,14 +3,16 @@ name: CI/CD - Dashboard App
 
 on:
   push:
-    branches: [main]
+    branches:
+      - main
     paths:
       - "app/**"
       - "Dockerfile"
       - ".github/workflows/ci-cd.yml"
 
   pull_request:
-    branches: [main]
+    branches:
+      - main
     paths:
       - "app/**"
       - "Dockerfile"
@@ -49,8 +51,7 @@ jobs:
       - name: Lint
         working-directory: app
         run: |
-          flake8 . --max-line-length=100 \
-            --extend-ignore=E501,W503 --exit-zero
+          flake8 . --max-line-length=100 --extend-ignore=E501,W503 --exit-zero
 
       - name: Verificar sintaxe
         working-directory: app
